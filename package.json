@@ -8,14 +8,12 @@
     "build": "npm i",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod_start": "NODE_ENV=production nodemon index.js"
-
-},
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^3.9.1"
   }
-
 }
