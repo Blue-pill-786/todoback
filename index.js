@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const todoRoutes = require("./todoRoutes");
-const notesRoutes = require("./notesRoutes")
+const todoRoutes = require("./src/todoRoutes");
+const notesRoutes = require("./src/notesRoutes")
 
 const server = express();
 console.log("Before JSON middleware"); // Add this line
