@@ -3,6 +3,10 @@ const controller = require("./todoController");
 
 const router = express.Router();
 
-router.get("/",controller.get);
+// GET request to retrieve all to-do items
+router.get("/", controller.get);
 
-module.exports.router=router;
+// POST request to add a new to-do item
+router.post("/", controller.post);
+
+module.exports = router;
