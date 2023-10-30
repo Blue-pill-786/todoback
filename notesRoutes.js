@@ -12,4 +12,4 @@ notesRouter.post("/", notesController.post);
 // DELETE request to delete a note by ID
 notesRouter.delete("/:id", notesController.deleteNote);
 
-module.exports = notesRouter;
+module.exports = {notesRouter};

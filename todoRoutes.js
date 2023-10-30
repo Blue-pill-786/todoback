@@ -9,4 +9,6 @@ router.get("/", controller.get);
 // POST request to add a new to-do item
 router.post("/", controller.post);
 
-module.exports = router;
+module.exports = {
+  router
+};
