@@ -1,12 +1,12 @@
 {
   
-    "name": "your-app-name",
+    "name": "todoapp",
     "version": "1.0.0",
     "description": "Your application description",
     "main": "index.js",
     "scripts": {
-      "start": "node index.js",  // Your script to start the application
-      "build": "npm install"  // The build script
+      "start": "node index.js",  
+      "build": "npm install" 
     },
   "dependencies": {
     "express": "^4.18.2"
