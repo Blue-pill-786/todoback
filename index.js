@@ -1,12 +1,21 @@
 const express = require("express");
-const todoRoutes=require("./todoRoutes");
+const todoRoutes = require("./todoRoutes");
 
 const server = express();
-server.listen(4100);
+const port = 4100;
 
 server.use("/api/todos/", todoRoutes.router);
 
-server.get("/", (req, res)=>{
-    res.send("Welcome to Utility api");
+server.get("/", (req, res) => {
+  res.send("Welcome to Utility API");
 });
-console.log("Server is listening at 4100");
+
+// Error handling middleware
+server.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: "Something went wrong" });
+});
+
+server.listen(port, () => {
+  console.log(`Server is listening at port ${port}`);
+});
