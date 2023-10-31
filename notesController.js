@@ -1,7 +1,7 @@
 const notes = [
     {
         id: 1,
-        text: "Go to Gym at 9",
+        text: "Please dont waste your time reading this note. As it is a dummy note",
         createdOn: new Date(),
     },
     {
