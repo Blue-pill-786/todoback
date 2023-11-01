@@ -1,10 +1,10 @@
 const express = require("express");
 const todoRoutes = require("./todoRoutes");
 const notesRoutes = require("./notesRoutes");
-
+const cors = require("cors")
 const server = express();
 const port = 4100;
-
+server.use(cors());
 server.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
