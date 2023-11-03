@@ -1,3 +1,4 @@
+const allowedOrigins = require("./config/allowedOrigins.js");
 const express = require("express");
 const todoRoutes = require("./todoRoutes");
 const notesRoutes = require("./notesRoutes");
@@ -6,7 +7,17 @@ const corsOptions = require('./config/corsOptions')
 const server = express();
 const port = 4100;
 
-server.use(cors(corsOptions)); // Use the cors middleware with your specified options.
+server.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+); // Use the cors middleware with your specified options.
 
 server.use("/api/todos", todoRoutes.router);
 server.use("/api/notes/", notesRoutes.notesRouter);
