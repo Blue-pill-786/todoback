@@ -1,4 +1,4 @@
-const allowedOrigins = require("./config/allowedOrigins.js");
+
 const express = require("express");
 const todoRoutes = require("./todoRoutes");
 const notesRoutes = require("./notesRoutes");
