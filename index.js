@@ -6,6 +6,12 @@ const cors = require("cors")
 const corsOptions = require('./config/corsOptions')
 const server = express();
 const port = 4100;
+const mongoose = require('mongoose');
+const url = require('./mongodb')
+
+
+mongoose.connect(url);
+
 
 server.use(cors(corsOptions))// Use the cors middleware with your specified options.
 

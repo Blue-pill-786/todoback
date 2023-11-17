@@ -18,12 +18,13 @@ module.exports.get=(req, res)=>{
 module.exports.post = (req, res) => {
     try {
       // Parse the request body to extract the new to-do item's data
-      const { text, completed } = req.body;
+      const { text, completed, id } = req.body;
   
       // Generate a new to-do item object
       const newTodo = {
-        text,
+        text:text,
         completed: completed || false, // Set completed to false if not provided
+        id: todos.length + 1, // Assign it an ID that is one greater than the current max ID
       };
   
       // Add the new to-do item to the `todos` array
@@ -33,7 +34,7 @@ module.exports.post = (req, res) => {
       res.status(201).json(newTodo);
     } catch (error) {
       // Handle any errors that might occur during the process
-      res.status(500).json({ error: "Something went wrong" });
+      res.status(500).json({ error: "Something went wrong", error });
     }
   };
 
