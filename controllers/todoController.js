@@ -55,17 +55,18 @@ exports.deleteTodo = async (req, res) => {
 
 exports.updateTodo = async (req, res) => {
   try {
-    const { todoId } = req.params;
+    const { todoId } = req.url;
+    const todoId1 = req.params.todoId;
     const { text, completed } = req.body;
-    console.log('Update request for ID:', todoId); // Debug logging
+    console.log('Update request for ID:', todoId,todoId1); // Debug logging
     console.log('Update payload:', req.body); // Debug logging
 
     // Find the todo by ID and update it
     const updatedTodo = await Todo.findByIdAndUpdate(todoId, { 
-      text, 
-      completed: true,
+      ...Todo,
+      completed:!completed
      });
-
+     console.log(updatedTodo)
     if (!updatedTodo) {
       return res.status(404).json({ error: "Todo not found" });
     }
