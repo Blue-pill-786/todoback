@@ -61,7 +61,10 @@ exports.updateTodo = async (req, res) => {
     console.log('Update payload:', req.body); // Debug logging
 
     // Find the todo by ID and update it
-    const updatedTodo = await Todo.findByIdAndUpdate(todoId, { text, completed }, { new: true });
+    const updatedTodo = await Todo.findByIdAndUpdate(todoId, { 
+      text, 
+      completed: true,
+     });
 
     if (!updatedTodo) {
       return res.status(404).json({ error: "Todo not found" });
