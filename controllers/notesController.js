@@ -35,11 +35,11 @@ exports.addNote = async (req, res) => {
 // DELETE handler to delete a note
 exports.deleteNote = async (req, res) => {
   try {
-    const { noteId } = req.params;
+    const noteId  = req.params.id;
 
     // Find the note by ID and delete it
-    await Note.findByIdAndDelete(noteId);
-
+     await Note.findByIdAndDelete(noteId);
+    
     // Respond with success message
     res.json({ message: "Note deleted successfully" });
   } catch (error) {
