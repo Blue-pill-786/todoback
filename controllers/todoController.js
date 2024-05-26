@@ -56,10 +56,9 @@ exports.deleteTodo = async (req, res) => {
 exports.updateTodo = async (req, res) => {
   try {
     const  todoId  = req.params.id;
-    const todoId1 = req.params.id;
-    const { text, completed } = req.body;
-    console.log('Update request for ID:', todoId,todoId1); // Debug logging
-    console.log('Update payload:', req.body); // Debug logging
+  
+    const {  completed } = req.body;
+    
 
     // Find the todo by ID and update it
     const updatedTodo = await Todo.findByIdAndUpdate(
