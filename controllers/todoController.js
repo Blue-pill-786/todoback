@@ -36,7 +36,7 @@ exports.addTodo = async (req, res) => {
 exports.deleteTodo = async (req, res) => {
   try {
     const  todoId  = req.params.id;
-
+    console.log(todoId)
     // Find the todo by ID and delete it
     const deletedTodo = await Todo.findByIdAndDelete(todoId);
 
