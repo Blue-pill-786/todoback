@@ -50,3 +50,22 @@ exports.deleteTodo = async (req, res) => {
     res.status(500).json({ error: "Something went wrong", error });
   }
 };
+
+exports.updateTodo = async (req, res) => {
+  try {
+    const { todoId } = req.params;
+    const { text, completed } = req.body;
+    // Find the todo by ID and update it
+    const updatedTodo = await Todo.findByIdAndUpdate(todoId, {
+      text,
+      completed,
+      });
+      if (!updatedTodo) {
+        return res.status(404).json({ error: "Todo not found" });
+        }
+        // Respond with success message
+        res.json({ message: "Todo updated successfully" });
+        } catch (error) {
+          res.status(500).json({ error: "Something went wrong", error });
+          }
+          };
