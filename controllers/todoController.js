@@ -52,27 +52,22 @@ exports.deleteTodo = async (req, res) => {
 };
 
 // PUT handler to update a todo
+
 exports.updateTodo = async (req, res) => {
   try {
     const { todoId } = req.params;
     const { text, completed } = req.body;
+    console.log('Update request for ID:', todoId); // Debug logging
+    console.log('Update payload:', req.body); // Debug logging
 
-    // Find the todo by ID
-    const todo = await Todo.findById(todoId);
+    // Find the todo by ID and update it
+    const updatedTodo = await Todo.findByIdAndUpdate(todoId, { text, completed }, { new: true });
 
-    if (!todo) {
+    if (!updatedTodo) {
       return res.status(404).json({ error: "Todo not found" });
     }
 
-    // Update the todo's properties
-    todo.text = text !== undefined ? text : todo.text;
-    todo.completed = completed !== undefined ? completed : todo.completed;
-
-    // Save the updated todo to the database
-    await todo.save();
-
-    // Respond with the updated todo
-    res.json({ message: "Todo updated successfully", todo });
+    res.json(updatedTodo);
   } catch (error) {
     res.status(500).json({ error: "Something went wrong", error });
   }
